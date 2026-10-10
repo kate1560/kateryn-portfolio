@@ -950,6 +950,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const seleccionada = new URL(boton.href).searchParams.get("categoria") === categoria;
 
             boton.classList.toggle("bg-kate-pink", seleccionada);
+            boton.classList.toggle("hover:bg-kate-pink-strong", seleccionada);
+            boton.classList.toggle("hover:bg-kate-pink-light", !seleccionada);
             boton.classList.toggle("border-kate-pink", seleccionada);
             boton.classList.toggle("bg-white", !seleccionada);
             boton.classList.toggle("border-kate-border", !seleccionada);
@@ -959,6 +961,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const seleccionada = categoria === "todos";
 
             botonTodos.classList.toggle("bg-kate-pink", seleccionada);
+            botonTodos.classList.toggle("hover:bg-kate-pink-strong", seleccionada);
+            botonTodos.classList.toggle("hover:bg-kate-pink-light", !seleccionada);
             botonTodos.classList.toggle("border-kate-pink", seleccionada);
             botonTodos.classList.toggle("bg-white", !seleccionada);
             botonTodos.classList.toggle("border-kate-border", !seleccionada);
