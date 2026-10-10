@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+    --color-kate-pink: #FFAFD7;
+    --color-kate-pink-soft: #FFE4F1;
+    --color-kate-pink-light: #FFF2F8;
+    --color-kate-pink-strong: #F45BA5;
+    --color-kate-pink-deep: #D94F97;
+
+    --color-kate-cream: #FFF9F5;
+    --color-kate-white: #FFFFFF;
+    --color-kate-dark: #211B20;
+    --color-kate-gray: #716970;
+    --color-kate-border: #EADDE4;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        font-family: "DM Sans", sans-serif;
+        background: var(--color-kate-cream);
+        color: var(--color-kate-dark);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Manrope", sans-serif;
+    }
+
+    ::selection {
+        background: var(--color-kate-pink);
+        color: var(--color-kate-dark);
+    }
+}
+
+@layer components {
+    .kate-container {
+        width: min(90%, 1380px);
+        margin-inline: auto;
+    }
+
+    .kate-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--color-kate-pink-deep);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .kate-button-dark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+
+        padding: 0.9rem 1.6rem;
+
+        border: 1px solid var(--color-kate-dark);
+        border-radius: 9999px;
+
+        background: var(--color-kate-dark);
+        color: #FFFFFF;
+
+        font-weight: 600;
+
+        transition:
+            background-color 300ms ease,
+            border-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
+    }
+
+    .kate-button-dark:hover {
+        background: var(--color-kate-pink-strong);
+        border-color: var(--color-kate-pink-strong);
+        color: var(--color-kate-dark);
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 18px 45px rgba(244, 91, 165, 0.25);
+    }
+
+    .kate-button-outline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+
+        padding: 0.9rem 1.6rem;
+
+        border: 1px solid var(--color-kate-dark);
+        border-radius: 9999px;
+
+        background: transparent;
+        color: var(--color-kate-dark);
+
+        font-weight: 600;
+
+        transition:
+            background-color 300ms ease,
+            border-color 300ms ease,
+            color 300ms ease,
+            transform 300ms ease,
+            box-shadow 300ms ease;
+    }
+
+    .kate-button-outline:hover {
+        background: var(--color-kate-pink);
+        border-color: var(--color-kate-pink);
+        color: var(--color-kate-dark);
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 14px 35px rgba(255, 175, 215, 0.28);
+    }
+}
+
+@keyframes kate-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.kate-marquee {
+    animation: kate-marquee 30s linear infinite;
+}
+
+@keyframes kate-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.kate-float {
+    animation: kate-float 5s ease-in-out infinite;
+}
