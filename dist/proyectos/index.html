@@ -925,6 +925,82 @@
     </span>
 
 </a>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const botones = Array.from(
+        document.querySelectorAll('a[href*="categoria="]')
+    );
+
+    if (botones.length !== 2) {
+        console.warn("No se encontraron los dos filtros de proyectos.");
+        return;
+    }
+
+    const botonTodos = botones[0].parentElement.querySelector('a[href="/proyectos"]')
+        || botones[0].parentElement.querySelector('a[href="/proyectos/"]');
+
+    const tarjetas = Array.from(
+        document.querySelectorAll("article")
+    ).filter(tarjeta =>
+        tarjeta.querySelector('a[href*="/proyectos/"]')
+    );
+
+    function filtrar(categoria) {
+        botones.forEach(boton => {
+            const seleccionada = new URL(boton.href).searchParams.get("categoria") === categoria;
+
+            boton.classList.toggle("bg-kate-pink", seleccionada);
+            boton.classList.toggle("border-kate-pink", seleccionada);
+            boton.classList.toggle("bg-white", !seleccionada);
+            boton.classList.toggle("border-kate-border", !seleccionada);
+        });
+
+        if (botonTodos) {
+            const seleccionada = categoria === "todos";
+
+            botonTodos.classList.toggle("bg-kate-pink", seleccionada);
+            botonTodos.classList.toggle("border-kate-pink", seleccionada);
+            botonTodos.classList.toggle("bg-white", !seleccionada);
+            botonTodos.classList.toggle("border-kate-border", !seleccionada);
+        }
+
+        tarjetas.forEach(tarjeta => {
+            const enlace = tarjeta.querySelector('a[href*="/proyectos/"]');
+            const slug = enlace.getAttribute("href").split("/").filter(Boolean).pop();
+
+            const esFrontend = ["latido-ancestral", "plus-size"].includes(slug);
+            const esUxUi = ["rastro-cafe", "encanto-belleza"].includes(slug);
+
+            tarjeta.hidden = !(
+                categoria === "todos" ||
+                (categoria === "frontend" && esFrontend) ||
+                (categoria === "ux-ui" && esUxUi)
+            );
+
+            tarjeta.style.display = tarjeta.hidden ? "none" : "";
+        });
+    }
+
+    [...botones, botonTodos].filter(Boolean).forEach(boton => {
+        boton.addEventListener("click", function (evento) {
+            evento.preventDefault();
+
+            const categoria = new URL(boton.href).searchParams.get("categoria") || "todos";
+
+            filtrar(categoria);
+
+            const url = categoria === "todos"
+                ? "/proyectos"
+                : "/proyectos?categoria=" + categoria;
+
+            history.replaceState(null, "", url);
+        });
+    });
+
+    const categoriaInicial = new URLSearchParams(location.search).get("categoria") || "todos";
+    filtrar(["todos", "frontend", "ux-ui"].includes(categoriaInicial) ? categoriaInicial : "todos");
+});
+</script>
 </body>
 
 </html>
