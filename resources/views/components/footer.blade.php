@@ -1,32 +1,43 @@
+
 <footer
-    class="border-t border-kate-pink-deep/10 bg-kate-pink-light"
+    class="w-full border-t border-kate-pink-deep/10 bg-kate-pink-light"
 >
-    <div class="kate-container py-16">
+    <div class="kate-container py-12 sm:py-14 lg:py-16">
 
         <div
-            class="mx-auto grid max-w-6xl gap-12 text-center md:grid-cols-3 md:gap-16"
+            class="mx-auto grid max-w-6xl grid-cols-1 gap-10 text-center sm:gap-12 md:grid-cols-3 md:gap-8 lg:gap-16"
         >
 
-            {{-- Marca --}}
-            <div class="flex flex-col items-center">
+            {{-- =====================================================
+                 MARCA
+            ====================================================== --}}
+
+            <div class="flex min-w-0 flex-col items-center">
+
                 <a
                     href="{{ route('home') }}"
-                    class="text-xl font-extrabold tracking-[-.04em]"
+                    class="text-center text-lg font-extrabold tracking-[-.04em] text-kate-dark transition-colors duration-300 hover:text-kate-pink-deep sm:text-xl"
                 >
                     KATERYN MARTÍNEZ
                 </a>
 
                 <p
-                    class="mt-5 max-w-sm leading-7 text-kate-gray"
+                    class="mt-4 max-w-sm text-sm leading-7 text-kate-gray sm:mt-5 sm:text-base"
                 >
-                    Diseño, desarrollo y creo ideas <br>
+                    Diseño, desarrollo y creo ideas
+                    <br class="hidden sm:block">
                     que cobran vida en cada proyecto.
                 </p>
+
             </div>
 
 
-            {{-- Navegación --}}
-            <div class="flex flex-col items-center">
+            {{-- =====================================================
+                 NAVEGACIÓN
+            ====================================================== --}}
+
+            <div class="flex min-w-0 flex-col items-center">
+
                 <h3
                     class="text-xs font-bold tracking-[.18em] text-kate-pink-deep"
                 >
@@ -35,6 +46,7 @@
 
                 <nav
                     class="mt-5 flex flex-col items-center gap-3"
+                    aria-label="Navegación del pie de página"
                 >
 
                     <a
@@ -73,11 +85,16 @@
                     </a>
 
                 </nav>
+
             </div>
 
 
-            {{-- Redes --}}
-            <div class="flex flex-col items-center">
+            {{-- =====================================================
+                 REDES SOCIALES Y CONTACTO
+            ====================================================== --}}
+
+            <div class="flex min-w-0 flex-col items-center">
+
                 <h3
                     class="text-xs font-bold tracking-[.18em] text-kate-pink-deep"
                 >
@@ -123,15 +140,20 @@
                     </a>
 
                 </div>
+
             </div>
 
         </div>
 
 
-        {{-- Cierre centrado --}}
+        {{-- =========================================================
+             CIERRE Y CRÉDITOS
+        ========================================================== --}}
+
         <div
-            class="mt-14 flex flex-col items-center gap-2 border-t border-kate-pink-deep/15 pt-7 text-center text-sm text-kate-gray"
+            class="mt-12 flex flex-col items-center gap-2 border-t border-kate-pink-deep/15 pt-7 text-center text-xs leading-6 text-kate-gray sm:mt-14 sm:text-sm"
         >
+
             <p>
                 © {{ date('Y') }} Kateryn Martínez
             </p>
@@ -139,6 +161,7 @@
             <p>
                 Diseñado y desarrollado por Kateryn Martínez
             </p>
+
         </div>
 
     </div>

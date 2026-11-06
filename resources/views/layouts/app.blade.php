@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -46,17 +47,23 @@
     @stack('styles')
 </head>
 
-<body class="min-h-screen overflow-x-hidden bg-kate-cream text-kate-dark antialiased">
+<body class="flex min-h-screen flex-col overflow-x-hidden bg-kate-cream text-kate-dark antialiased">
 
+    {{-- Navegación principal --}}
     <x-navbar />
 
-    <main>
+    {{-- Contenido de cada vista --}}
+    <main class="w-full min-w-0 flex-1">
         @yield('content')
     </main>
 
+    {{-- Pie de página --}}
     <x-footer />
 
+    {{-- Acceso flotante a WhatsApp --}}
     <x-whatsapp />
+
+    @stack('scripts')
 
 </body>
 

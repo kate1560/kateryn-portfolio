@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 @theme {
@@ -21,6 +22,7 @@
 
     body {
         margin: 0;
+        min-width: 0;
         font-family: "DM Sans", sans-serif;
         background: var(--color-kate-cream);
         color: var(--color-kate-dark);
@@ -35,6 +37,11 @@
         font-family: "Manrope", sans-serif;
     }
 
+    img,
+    video {
+        max-width: 100%;
+    }
+
     ::selection {
         background: var(--color-kate-pink);
         color: var(--color-kate-dark);
@@ -44,6 +51,8 @@
 @layer components {
     .kate-container {
         width: min(90%, 1380px);
+        max-width: 100%;
+        min-width: 0;
         margin-inline: auto;
     }
 
@@ -64,6 +73,7 @@
         justify-content: center;
         gap: 0.75rem;
 
+        max-width: 100%;
         padding: 0.9rem 1.6rem;
 
         border: 1px solid var(--color-kate-dark);
@@ -73,6 +83,7 @@
         color: #FFFFFF;
 
         font-weight: 600;
+        text-align: center;
 
         transition:
             background-color 300ms ease,
@@ -99,6 +110,7 @@
         justify-content: center;
         gap: 0.75rem;
 
+        max-width: 100%;
         padding: 0.9rem 1.6rem;
 
         border: 1px solid var(--color-kate-dark);
@@ -108,6 +120,7 @@
         color: var(--color-kate-dark);
 
         font-weight: 600;
+        text-align: center;
 
         transition:
             background-color 300ms ease,
@@ -156,4 +169,15 @@
 
 .kate-float {
     animation: kate-float 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .kate-marquee,
+    .kate-float {
+        animation: none;
+    }
 }
